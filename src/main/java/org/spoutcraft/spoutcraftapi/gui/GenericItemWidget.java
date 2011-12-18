@@ -60,7 +60,7 @@ public class GenericItemWidget extends GenericWidget implements ItemWidget {
 		this.setTypeId(input.readInt());
 		this.setData(input.readShort());
 		this.setDepth(input.readInt());
-
+		this.setAmount(input.readInt());
 	}
 
 	@Override
@@ -69,6 +69,7 @@ public class GenericItemWidget extends GenericWidget implements ItemWidget {
 		output.writeInt(getTypeId());
 		output.writeShort(getData());
 		output.writeInt(getDepth());
+		output.writeInt(getAmount());
 	}
 
 	public ItemWidget setTypeId(int id) {
