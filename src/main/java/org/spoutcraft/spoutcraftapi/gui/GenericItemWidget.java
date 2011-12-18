@@ -30,15 +30,20 @@ public class GenericItemWidget extends GenericWidget implements ItemWidget {
 	protected int material = -1;
 	protected short data = -1;
 	protected int depth = 8;
+	protected int amount = 1;
 	protected ItemStack toRender = null;
+	
+	private net.minecraft.src.ItemStack is = null;
 
 	public GenericItemWidget() {
-
+		is = new net.minecraft.src.ItemStack(material, amount, data);
 	}
 
 	public GenericItemWidget(ItemStack item) {
 		this.material = item.getTypeId();
 		this.data = item.getDurability();
+		this.amount = item.getAmount();
+		is = new net.minecraft.src.ItemStack(material, amount, data);
 	}
 
 	public int getNumBytes() {
@@ -68,6 +73,7 @@ public class GenericItemWidget extends GenericWidget implements ItemWidget {
 
 	public ItemWidget setTypeId(int id) {
 		this.material = id;
+		is = new net.minecraft.src.ItemStack(material, amount, data);
 		return this;
 	}
 
@@ -77,6 +83,7 @@ public class GenericItemWidget extends GenericWidget implements ItemWidget {
 
 	public ItemWidget setData(short data) {
 		this.data = data;
+		is.setItemDamage(data);
 		return this;
 	}
 
@@ -93,6 +100,20 @@ public class GenericItemWidget extends GenericWidget implements ItemWidget {
 		return depth;
 	}
 
+	public ItemWidget setAmount(int amount) {
+		this.amount=amount;
+		is = new net.minecraft.src.ItemStack(material, amount, data);
+		return this;
+	}
+	
+	public int getAmount() {
+		return amount;
+	}
+	
+	public net.minecraft.src.ItemStack getItemStack() {
+		return is;
+	}
+	
 	public ItemWidget setHeight(int height) {
 		super.setHeight(height);
 		return this;
