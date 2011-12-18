@@ -64,6 +64,21 @@ public interface ItemWidget extends Widget {
 	 * @return depth
 	 */
 	public int getDepth();
+    
+	/**
+	 * Sets the amount of items. 1 by default.
+	 *
+	 * @param amount
+	 * @return ItemWidget
+	 */
+	 public ItemWidget setAmount(int amount);
+
+	/**
+	 * Gets the amount of items. 1 by default.
+	 *
+	 * @return amount
+ 	 */
+	public int getAmount();
 
 	public ItemWidget setWidth(int width);
 
